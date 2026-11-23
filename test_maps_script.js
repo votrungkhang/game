@@ -1,0 +1,48 @@
+const fs = require('fs');
+
+// Maps Variant A (Classic 4-color folded pin)
+const mapsA = `<svg viewBox="0 0 48 48" width="100%" height="100%">
+  <!-- Base Pin -->
+  <path fill="#4285F4" d="M24 4C14.6 4 7 11.6 7 21c0 8.5 7.4 16.8 17 23 9.6-6.2 17-14.5 17-23 0-9.4-7.6-17-17-17z"/>
+  <!-- Green right/bottom fold -->
+  <path fill="#34A853" d="M24 44s9.6-6.2 17-23c0-3.6-1.2-6.9-3.3-9.5L24 28v16z"/>
+  <!-- Yellow upper-left fold -->
+  <path fill="#FBBC05" d="M12.4 10.7C9.6 13.2 7.8 16.2 7 21c0 4.3 2.9 10.1 7.3 16.3L24 23V4c-4.4 0-8.3 2.6-11.6 6.7z"/>
+  <!-- Red top dome -->
+  <path fill="#EA4335" d="M24 4c4.4 0 8.3 2.6 11.6 6.7L24 23V4z"/>
+  <!-- Center circle -->
+  <circle cx="24" cy="20" r="6" fill="#FFFFFF"/>
+</svg>`;
+
+// Maps Variant B (Official 2020 Maps Folded Pin standard):
+const mapsB = `<svg viewBox="0 0 48 48" width="100%" height="100%">
+  <!-- Red Top -->
+  <path fill="#EA4335" d="M24 4C16.82 4 11 9.82 11 17c0 2.22.56 4.31 1.54 6.13L24 13.5V4z"/>
+  <!-- Yellow Left Fold -->
+  <path fill="#FBBC04" d="M12.54 23.13C14.07 26 16.63 30.08 19.5 34.62L24 41.5V26.5l-11.46-3.37z"/>
+  <!-- Green Right Tip -->
+  <path fill="#34A853" d="M24 41.5l4.5-6.88c4.25-6.72 8.5-13.44 8.5-17.62 0-2.22-.56-4.31-1.54-6.13L24 26.5v15z"/>
+  <!-- Blue Fold -->
+  <path fill="#4285F4" d="M35.46 10.87C32.4 5.92 27.2 4 24 4v9.5l11.46-2.63z"/>
+  <!-- Center Hole -->
+  <circle cx="24" cy="17" r="5.5" fill="#FFFFFF"/>
+</svg>`;
+
+// Maps Variant C (Official Google Workspace Maps Pin):
+const mapsC = `<svg viewBox="0 0 24 24" width="100%" height="100%">
+  <path fill="#EA4335" d="M12 2C7.58 2 4 5.58 4 10c0 5.25 8 13 8 13s8-7.75 8-13c0-4.42-3.58-8-8-8z"/>
+  <path fill="#34A853" d="M12 23s8-7.75 8-13c0-1.85-.63-3.55-1.69-4.91L12 14.5V23z"/>
+  <path fill="#FBBC05" d="M6.3 5.48C4.87 6.74 4 8.27 4 10c0 2.22 1.48 5.16 3.73 8.35L12 11.5V2C9.72 2 7.73 3.37 6.3 5.48z"/>
+  <path fill="#EA4335" d="M12 2c2.28 0 4.27 1.37 5.7 3.48L12 11.5V2z"/>
+  <path fill="#4285F4" d="M7.73 18.35C9.07 20.25 10.51 21.84 12 23v-8.5l-4.27 3.85z"/>
+  <circle cx="12" cy="10" r="3.2" fill="#FFFFFF"/>
+</svg>`;
+
+const html = `<!DOCTYPE html><html><body style="background:#f8f9fa;display:flex;gap:20px;padding:40px;">
+<div style="width:80px;height:80px;background:white;padding:10px;border-radius:12px;">${mapsA}</div>
+<div style="width:80px;height:80px;background:white;padding:10px;border-radius:12px;">${mapsB}</div>
+<div style="width:80px;height:80px;background:white;padding:10px;border-radius:12px;">${mapsC}</div>
+</body></html>`;
+
+fs.writeFileSync('test_maps_out.html', html);
+console.log('Saved test_maps_out.html');
